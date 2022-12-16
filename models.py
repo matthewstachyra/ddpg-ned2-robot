@@ -12,7 +12,7 @@ class Critic(nn.Module):
     #   represented as a 6-tuple of joint values
     # adim <- dimension of the action which is (6,) because action is
     #   also represented as a 6-tuple of joint  values
-    def __init__(self, beta, sdim, adim, hidden1=400, hidden2=300, name, checkpoint_dir='tmp'):
+    def __init__(self, beta, sdim, adim, hidden1=400, hidden2=300, name='Critic', checkpoint_dir='tmp'):
         super().__init__()
 
         # layer 1
@@ -72,7 +72,7 @@ class Critic(nn.Module):
 
 class Actor(nn.Module):
     # Outputs action for the input state.
-    def __init__(self, alpha, sdim, adim, hidden1=400, hidden2=300, name, checkpoint_dir='tmp'):
+    def __init__(self, alpha, sdim, adim, hidden1=400, hidden2=300, name='Actor', checkpoint_dir='tmp'):
         super().__init__()
 
         # layer 1

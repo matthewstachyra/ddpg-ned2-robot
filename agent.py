@@ -7,7 +7,7 @@ from models import Actor, Critic
 from noise import OUACtionNoise as Noise
 
 class Agent:
-    def __init__(self, env, alpha, beta, sdim=6, adim=6, tau, env, gamma=0.99,
+    def __init__(self, env, alpha, beta, sdim=6, adim=6, tau=None, gamma=0.99, \
                 max_size=1000000, hidden1=400, hidden2=300, batch_size=64):
         self.env = env
         self.gamma = gamma

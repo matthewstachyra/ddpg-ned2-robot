@@ -2,7 +2,7 @@ import torch
 import numpy as np
 
 from agent import Agent
-from env import Environment as Env
+from environment import Environment as Env
 
 if __name__ == "__main__":
     TARGET = (0.5, -0.5, -0.5, 1, 0, 0)
@@ -19,7 +19,7 @@ if __name__ == "__main__":
     np.random.seed(SEED)
 
     env = Env(target=TARGET)
-    agent = Agent(env=env, alpha=ALPHA, beta=BETA, sdim=[6], adim=[6], tau=TAU, env=env, \
+    agent = Agent(env=env, alpha=ALPHA, beta=BETA, sdim=[6], adim=[6], tau=TAU, \
                   batch_size=BATCH_SIZE)
             
     for episode in range(EPISODES_N):
