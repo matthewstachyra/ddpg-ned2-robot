@@ -18,14 +18,14 @@ if __name__ == "__main__":
     torch.manual_seed(SEED)
     np.random.seed(SEED)
 
-    env   = Env(...)
-    agent = Agent(alpha=ALPHA, beta=BETA, sdim=[6], adim=[6], tau=TAU, env=env, \
+    env = Env(target=TARGET)
+    agent = Agent(env=env, alpha=ALPHA, beta=BETA, sdim=[6], adim=[6], tau=TAU, env=env, \
                   batch_size=BATCH_SIZE)
             
     for episode in range(EPISODES_N):
         steps, tr = 0, 0
         done = False
-        state = env.start()
+        state = env.reset()
         while not done:
             action = agent.act(state)
             sprime, reward, done = env.step(action)
