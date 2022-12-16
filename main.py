@@ -37,6 +37,6 @@ if __name__ == "__main__":
             tr += reward
 
         RUN_DATA.append(tr)
-        print(f"{episode} had {steps} steps with total reward {tr}.")
+        # print(f"{episode} had {steps} steps with total reward {tr}.")
 
         if episode%25==0: agent.save_models()
