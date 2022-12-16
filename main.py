@@ -19,8 +19,7 @@ if __name__ == "__main__":
     np.random.seed(SEED)
 
     env = Env(target=TARGET)
-    agent = Agent(env=env, alpha=ALPHA, beta=BETA, sdim=[6], adim=[6], tau=TAU, \
-                  batch_size=BATCH_SIZE)
+    agent = Agent(env=env, alpha=ALPHA, beta=BETA, sdim=6, adim=6, tau=TAU, batch_size=BATCH_SIZE)
             
     for episode in range(EPISODES_N):
         steps, tr = 0, 0

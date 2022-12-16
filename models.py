@@ -13,7 +13,7 @@ class Critic(nn.Module):
     # adim <- dimension of the action which is (6,) because action is
     #   also represented as a 6-tuple of joint  values
     def __init__(self, beta, sdim, adim, hidden1=400, hidden2=300, name='Critic', checkpoint_dir='tmp'):
-        super().__init__()
+        super(Critic, self).__init__()
 
         # layer 1
         self.fc1 = nn.Linear(sdim, hidden1)
@@ -37,7 +37,7 @@ class Critic(nn.Module):
         torch.nn.init.uniform_(self.fc3.bias.data, -f3, f3)
 
         # Adam optimizer
-        self.opt = nn.optim.Adam(self.parameters(), lr=beta) 
+        self.opt = torch.optim.Adam(self.parameters(), lr=beta) 
         self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
         self.to(self.device)
 
@@ -73,7 +73,7 @@ class Critic(nn.Module):
 class Actor(nn.Module):
     # Outputs action for the input state.
     def __init__(self, alpha, sdim, adim, hidden1=400, hidden2=300, name='Actor', checkpoint_dir='tmp'):
-        super().__init__()
+        super(Actor, self).__init__()
 
         # layer 1
         self.fc1 = nn.Linear(sdim, hidden1)
@@ -97,7 +97,7 @@ class Actor(nn.Module):
         torch.nn.init.uniform_(self.fc3.bias.data, -f3, f3)
         
         # Adam optimizer
-        self.opt = nn.optim.Adam(self.parameters(), lr=alpha) 
+        self.opt = torch.optim.Adam(self.parameters(), lr=alpha) 
         self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
         self.to(self.device)
 
