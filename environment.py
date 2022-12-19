@@ -30,7 +30,7 @@ class Environment:
 
     def step(self, action):
         assert self.is_valid_action(action)
-        self.state = self.state + action
+        self.state = tuple(map(sum, zip(self.state, tuple(action.tolist()))))
         reward = self.get_reward()
         done = self.check_done()
         return self.state, reward, done
@@ -38,7 +38,7 @@ class Environment:
 
     def is_valid_action(self, action):
         valid = True
-        candidate_state = self.state + action
+        candidate_state = tuple(map(sum, zip(self.state, tuple(action.tolist()))))
         for i, range in enumerate(self.joint_ranges.values()):
             if candidate_state[i] < range[0] or \
                 candidate_state[i] > range[1]:

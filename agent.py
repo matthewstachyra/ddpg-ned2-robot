@@ -55,13 +55,13 @@ class Agent:
         while not valid:
             mu = self.actor(obv).to(self.actor.device)
             mu_prime = mu + torch.tensor(self.noise(), dtype=torch.float).to(self.actor.device)
-            valid = self.env.is_valid_action(obv, mu_prime)
+            valid = self.env.is_valid_action(mu_prime)
             self.actor.train()
-        return mu_prime.cpu().detach.numpy()
+        return mu_prime.cpu().detach().numpy()
 
     
     def remember(self, state, action, reward, new_state, done):
-        self.memory.store(state, action, reward, new_state, done)
+        self.buffer.store(state, action, reward, new_state, done)
 
     
     def learn(self):
