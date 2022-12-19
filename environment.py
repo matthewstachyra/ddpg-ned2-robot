@@ -11,12 +11,12 @@ class Environment:
 
         # joint ranges are constrained to a cone shape in 
         #   front of the robot arm
-        self.joint_ranges = {1 : (-1.25, 1.25),
-                             2 : (-1.25, 0.25),
-                             3 : (-1, 1),
+        self.joint_ranges = {1 : (-2.5, 2.5),
+                             2 : (-1.5, 0.5),
+                             3 : (-1, 1.5),
                              4 : (-1.75, 1.75),
-                             5 : (-0.25, .25),
-                             6 : (-0.25, 0.25)}
+                             5 : (-1.5, .75),
+                             6 : (-1, 1)}
         self.n_joints = len(self.joint_ranges)
 
         # initialize node and wrapper
