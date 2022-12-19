@@ -1,4 +1,4 @@
-import math
+import numpy as np
 import rospy
 from niryo_robot_python_ros_wrapper import *
 
@@ -47,15 +47,12 @@ class Environment:
             
 
     def get_reward(self):
-        # x, x2 = self.state[0], self.target[0]
-        # y, y2 = self.state[1], self.target[1]
-        # z, z2 = self.state[2], self.target[2]
-        # return math.sqrt((z2 - z)**2 + (y2 - y)**2 + (x2 - x)**2)
-        return -1
+        return np.lingalg.norm(self.state - self.target)
 
     
-    def check_done(self):
-        return self.state == self.target
+    def check_done(self, thresh=0.15):
+        distance = np.lingalg.norm(self.state - self.target)
+        return distance < thresh
 
 
     def move(self, state):
